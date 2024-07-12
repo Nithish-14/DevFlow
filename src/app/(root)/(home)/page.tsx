@@ -4,14 +4,14 @@ import { UserButton } from "@clerk/nextjs";
 import { useTheme } from "../../../../context/ThemeProvider";
 
 export default function Home() {
-  const { mode } = useTheme();
-
-  console.log(mode);
+  const { mode, setMode } = useTheme();
 
   return (
     <div>
       {/* <UserButton afterSwitchSessionUrl="/" /> */}
-      <button>click</button>
+      <button onClick={() => setMode(mode === "light" ? "dark" : "light")}>
+        {mode}
+      </button>
     </div>
   );
 }
