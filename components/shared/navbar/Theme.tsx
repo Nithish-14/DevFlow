@@ -1,7 +1,7 @@
 import React from "react";
 
 const Theme = () => {
-  return <div>Theme</div>;
+  return <div>Theme Component</div>;
 };
 
 export default Theme;
