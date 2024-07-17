@@ -8,13 +8,15 @@ import {
 } from "@/components/ui/sheet";
 import Image from "next/image";
 import Link from "next/link";
-import { SignedOut } from "@clerk/nextjs";
+import { SignedOut, useAuth } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { sidebarLinks } from "../../../constants";
 import { usePathname } from "next/navigation";
 
 const NavContent = () => {
   const pathname = usePathname();
+
+  const { userId } = useAuth();
 
   return (
     <section className="flex h-full flex-col gap-6 pt-16">
@@ -24,6 +26,14 @@ const NavContent = () => {
           pathname === item.route;
 
         // TODO
+
+        if (item.route === "/profile") {
+          if (userId) {
+            item.route = `${item.route}/${userId}`;
+          } else {
+            return null;
+          }
+        }
 
         return (
           <SheetClose asChild key={item.route}>
