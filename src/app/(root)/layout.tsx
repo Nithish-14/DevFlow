@@ -4,7 +4,7 @@ import LeftSidebar from "../../../components/shared/LeftSidebar";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className="background-light850_dark100 relative custom-scrollbar">
+    <main className="background-light850_dark100 relative">
       <Navbar />
       <div className="flex">
         <LeftSidebar />
