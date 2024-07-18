@@ -42,6 +42,23 @@ const questions = [
     answers: [],
     createdAt: new Date("2021-09-02T10:30:00.000Z"),
   },
+  {
+    _id: "3",
+    title: "How to center a div?",
+    tags: [
+      { _id: "3", name: "css" },
+      { _id: "4", name: "html" },
+    ],
+    author: {
+      _id: "2",
+      name: "Jane Smith",
+      picture: "jane-smith.jpg",
+    },
+    upvotes: 5,
+    views: 50,
+    answers: [],
+    createdAt: new Date("2021-09-02T10:30:00.000Z"),
+  },
 ];
 
 export default function Home() {
