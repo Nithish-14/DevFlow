@@ -3,6 +3,7 @@ import { authMiddleware } from "@clerk/nextjs/server";
 export default authMiddleware({
   publicRoutes: [
     "/",
+    "/api/webhooks",
     "question/:id",
     "/tags",
     "/tags/:id",
@@ -10,7 +11,7 @@ export default authMiddleware({
     "/community",
     "/jobs",
   ],
-  ignoredRoutes: ["/api/chatgpt"],
+  ignoredRoutes: ["/api/webhooks(.*)", "/api/chatgpt"],
 });
 
 // Make sure that the `/api/webhooks/(.*)` route is not protected here
