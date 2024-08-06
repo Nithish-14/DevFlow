@@ -7,11 +7,12 @@ import { getSavedQuestions } from "@/lib/actions/user.action";
 import { auth } from "@clerk/nextjs/server";
 import { SearchParamsProps } from "../../../../types";
 import Pagination from "../../../../components/shared/Pagination";
+import { redirect } from "next/navigation";
 
 export default async function Home({ searchParams }: SearchParamsProps) {
   const { userId } = auth();
 
-  if (!userId) return null;
+  if (!userId) redirect("/sign-in");
 
   const result = await getSavedQuestions({
     clerkId: userId,

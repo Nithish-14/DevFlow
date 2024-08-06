@@ -16,6 +16,7 @@ import { useEffect } from "react";
 interface Props {
   type: string;
   itemId: string;
+  isUserLoggedIn: boolean;
   userId: string;
   upvotes: number;
   hasupVoted: boolean;
@@ -33,11 +34,19 @@ const Votes = ({
   downvotes,
   hasdownVoted,
   hasSaved,
+  isUserLoggedIn,
 }: Props) => {
   const pathname = usePathname();
   const router = useRouter();
 
   const handleSave = async () => {
+    if (!isUserLoggedIn) {
+      return toast({
+        title: "Please log in",
+        description: "You must be logged in to perform this action",
+      });
+    }
+
     await toggleSaveQuestion({
       userId: JSON.parse(userId),
       questionId: JSON.parse(itemId),
@@ -51,7 +60,7 @@ const Votes = ({
   };
 
   const handleVote = async (action: string) => {
-    if (!userId) {
+    if (!isUserLoggedIn) {
       return toast({
         title: "Please log in",
         description: "You must be logged in to perform this action",

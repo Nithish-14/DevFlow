@@ -66,8 +66,9 @@ const AllAnswers = async ({
               <div className="flex justify-end">
                 <Votes
                   type="Answer"
+                  isUserLoggedIn={userId !== ""}
                   itemId={JSON.stringify(answer._id)}
-                  userId={JSON.stringify(userId)}
+                  userId={userId !== "" ? JSON.stringify(userId) : ""}
                   upvotes={answer.upvotes.length}
                   hasupVoted={answer.upvotes.includes(userId)}
                   downvotes={answer.downvotes.length}
