@@ -7,6 +7,12 @@ import Link from "next/link";
 import { SearchParamsProps } from "../../../../types";
 import Pagination from "../../../../components/shared/Pagination";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Community | Dev Overflow",
+};
+
 const Page = async ({ searchParams }: SearchParamsProps) => {
   const result = await getAllUsers({
     searchQuery: searchParams.q,
